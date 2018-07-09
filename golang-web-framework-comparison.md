@@ -1,17 +1,9 @@
-# Golang Web Framework Comparsion
+# Golang 웹프레임워크 비교
+Go 기반의 웹프레임워크 및 라우터 비교
 
-This suite aims to compare the public API of various Go web frameworks and routers.
+NOTE 코드는 Go 1.7이상 버젼을 기준으로 작성
 
-NOTE While code blocks are self-explained the list of PROs an CONs are highly opinionated and targeted Go 1.7+. Even if some frameworks has a more :thumbsdown: than another they still are awesome and may work better for your use cases.
-
-## Contents
-- [Reviewed libraries and frameworks](#reviewed-libraries-and-frameworks)
-- [HTTP handler. Signature](#http-handler-signature)
-- [HTTP middleware. Signature and sample code](#http-middleware-signature-and-sample-code)
-- [HTTP handler. Write Go struct as JSON response](#http-handler-write-go-struct-as-json-response)
-- [HTTP handler. Bind JSON payload into Go struct](#http-handler-bind-json-payload-into-go-struct)
-
-## Reviewed libraries and frameworks
+## 비교하는 라이브러리 및 프레임워크
 
 - stdlib net/http
 - gin-gonic/gin
@@ -32,7 +24,7 @@ NOTE While code blocks are self-explained the list of PROs an CONs are highly op
 - urfave/negroni
 - zenazn/goji
 
-## HTTP handler. Signature
+## HTTP 핸들러 - 특징
 
 - :thumbsdown: :exclamation: revel, beego are not idiomatic Go because they forces you to embed handler to the Framework's struct
 - :thumbsdown: martini, hoisie/web, macaron handlers are not strongly typed due to reflective dependency injection (which leads to poor performance)
@@ -166,9 +158,7 @@ type HandlerType interface{}
 g.Get("/", func(w http.ResponseWriter, req *http.Request) { ...
 ```
 
-## HTTP middleware. Signature and sample code
-
-TODO add godoc urls
+## HTTP 미들웨어 - 특징 & 샘플코드
 
 - :thumbsdown: revel, beego are not considered, they forces you to embed handler to the Framework's struct
 - :thumbsdown: martini, hoisie/web, macaron are not considered, their handers are not strongly typed due to reflective dependency injection
@@ -268,7 +258,7 @@ func Middleware(rw http.ResponseWriter, r *http.Request, next http.HandlerFunc) 
 }
 ```
 
-## HTTP handler. Write Go struct as JSON response
+## HTTP 핸들러 - JSON Response
 
 ### Common part
 ```go
@@ -380,7 +370,7 @@ c.Get("/", func(w http.ResponseWriter, r *http.Request) {
 })
 ```
 
-## HTTP handler. Bind JSON payload into Go struct
+## HTTP 핸들러 - JSON payload 바인드
 
 ### Common part
 ```go
